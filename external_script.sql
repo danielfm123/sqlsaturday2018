@@ -26,7 +26,7 @@ GO
 
 --guardar resultado
 
--- one time
+-- one time, crear linked server a si mismo
 EXEC master..sp_addlinkedserver 
     @server = 'loopback',  
     @srvproduct = '',
@@ -39,7 +39,7 @@ EXEC master..sp_serveroption
     @optvalue = 'TRUE';
 RECONFIGURE;
 
-
+-- ejecutar con openquery
 SELECT * INTO #tmp FROM OPENQUERY(loopback, '
 EXEC sp_execute_external_script
   @language =N''R'',
