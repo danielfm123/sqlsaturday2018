@@ -17,3 +17,4 @@ var = portafolio$peso %*% mvc %*% portafolio$peso
 
 dbSendStatement(con,"truncate table var")
 con %>% dbWriteTable("var",data.frame(var = var),append = T)
+dbCommit(con)
